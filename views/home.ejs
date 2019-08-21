@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    
+</head>
+<body>
+    <div class="container">
+        <div id="list-header">
+            <h1><i class="fas fa-list-alt"></i> TODO APP</h1>
+            </div>
+    <form action="/create" method="POST" >
+            <div id="list-category">
+                <select name="category">
+                    <option>Choose Category</option>
+                    <option>Personal</option>
+                    <option>Work</option>
+                    <option>School</option>
+                    <option>Cleaning</option>
+                    <option>Other</option>
+                </select>
+
+            </div>
+            <div class="list-content">
+                <div class="list-task">
+                    <input type="text" placeholder="Write Your Task" name="task" required/>
+                </div>
+                <div class="list-date">
+                        <i class="fas fa-calendar-alt"></i>
+                    <input type="date" name="date" required/>
+                </div>
+            </div>
+            <div class="list-submit">
+                <button type="submit" name="submit" ><i class="fas fa-plus"></i> ADD TASK</button>
+            </div>
+    </form> 
+    <% for(let i of list){ %>
+        <div class="list-items">
+                   
+                <div class="list-data">
+                        <h3><%= i.task %></h3>
+                        <h5><i class="fas fa-calendar-alt"></i> <%= i.duedate %></h5>
+                </div>
+                <div class="list-type">
+                        <h4><%= i.category %></h4>
+                       
+                </div>
+                <div class="list-data-delete">
+                    <a href="/delete?id=<%= i.id %>" ><i class="fas fa-trash-alt"></i></a>
+                </div>
+            </div>
+ <%   } %> 
+        </div>
+    </div>
+</body>
+</html>
